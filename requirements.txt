@@ -13,4 +13,4 @@ flask-cors
 numpy
 joblib
 scikit-learn
-gunicorn
+gunicorn==21.2.0
