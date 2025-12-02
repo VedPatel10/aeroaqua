@@ -81,16 +81,28 @@
                 <span class="text-slate-100 tracking-tighter font-semibold text-lg">AEROAQUA</span>
             </div>
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-                <a href="#dashboard" class="hover:text-slate-100 transition-colors">Live Telemetry</a>
-                <a href="#history" class="hover:text-slate-100 transition-colors">History</a>
-                <a href="#tech-stack" class="hover:text-slate-100 transition-colors">Tech Stack</a>
+                <a href="#dashboard" class="hover:text-slate-100 transition-colors">Forecast</a>
+                <a href="#history" class="hover:text-slate-100 transition-colors">Historic Analysis</a>
+                <a href="#tech-stack" class="hover:text-slate-100 transition-colors">Water Harvesting Methods</a>
+                <a href="#ml-framework" class="hover:text-slate-100 transition-colors">ML Framework</a>
             </div>
             <div class="flex items-center gap-3">
+
+                <!-- GitHub Repo Link -->
+                <a href="https://github.com/Gawthaman/aeroaqua/tree/main"
+                target="_blank"
+                class="hidden md:flex items-center gap-1 px-3 py-1.5 rounded text-xs 
+                        bg-slate-900/60 border border-slate-700 hover:border-slate-500 
+                        text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>GitHub</span>
+                </a>
+
                 <div id="system-status" class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                     <span class="text-xs font-mono-jb text-emerald-400 tracking-tight uppercase">System Online</span>
                 </div>
-            </div>
+            </div>            
         </div>
     </nav>
 
@@ -117,7 +129,7 @@
         <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
             <div>
                 <div class="text-xs font-mono-jb text-cyan-400 mb-2">/// LOCATION: 43.7°N, -79.4°W [TORONTO]</div>
-                <h1 class="text-3xl md:text-4xl font-medium text-white tracking-tight">Live Telemetry</h1>
+                <h1 class="text-3xl md:text-4xl font-medium text-white tracking-tight">Forecast</h1>
             </div>
             <div class="flex gap-2">
                 <button id="sync-btn" onclick="fetchTelemetryData()" class="glass-panel px-3 py-1.5 rounded text-xs text-slate-400 hover:text-white transition-colors border-slate-800 hover:border-slate-600 flex items-center gap-2">
@@ -286,10 +298,11 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-12 flex justify-between items-end">
                 <div>
-                    <h2 class="text-sm font-mono-jb text-cyan-400 mb-2">/// CLASSIFIED: TECHNOLOGY STACK</h2>
-                    <h3 class="text-2xl text-white font-medium tracking-tight">Capture Methods</h3>
+                    <h2 class="text-sm font-mono-jb text-cyan-400 mb-2">/// WATER HARVESTING METHODS</h2>
+                    <h3 class="text-2xl text-white font-medium tracking-tight">Passive & Active Collection Systems</h3>
                 </div>
             </div>
+
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Fog Net Card -->
@@ -408,10 +421,133 @@
         </div>
     </section>
 
+    <section id="ml-framework" class="py-20 border-t border-white/5 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <!-- Section Header -->
+            <div class="mb-12">
+                <h2 class="text-sm font-mono-jb text-purple-400 mb-2">/// MACHINE LEARNING FRAMEWORK</h2>
+                <h3 class="text-2xl text-white font-medium tracking-tight">
+                    How the AeroAqua Models Work
+                </h3>
+                <p class="text-slate-400 text-sm mt-2 max-w-3xl leading-relaxed">
+                    AeroAqua uses a hybrid data–modeling pipeline that combines real meteorology, reconstructed 
+                    dew datasets, solar-physics modeling, and synthetic fog generation. This enables reliable 
+                    predictions across fog nets, AWGs, and dew condensers—even with limited ground truth data.
+                </p>
+            </div>
+
+            <!-- GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Fog Model -->
+                <div class="glass-panel rounded-xl border border-slate-800 p-6">
+                    <h4 class="text-lg text-white font-medium flex items-center gap-2 mb-3">
+                        <i data-lucide="cloud-fog" class="w-5 h-5 text-cyan-400"></i>
+                        Fog Net Model
+                    </h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                        Fog events are rare and highly nonlinear. To overcome limited ground-truth datasets,
+                        we trained a <span class="text-cyan-300 font-mono">Random Forest</span> on a
+                        combination of:
+                    </p>
+                    <ul class="text-slate-400 text-sm font-mono-jb space-y-1 pl-4 list-disc">
+                        <li>MIT-14 mesh yield data</li>
+                        <li>Pepperwood Preserve fog climatology</li>
+                        <li>Synthetic fog samples (Gaussian Copula, CTGAN, TVAE)</li>
+                    </ul>
+                    <p class="text-slate-400 text-sm leading-relaxed mt-3">
+                        These generative models recreate correlated patterns between humidity, dew point,
+                        wind shear, cloud cover, and fog liquid water yield—allowing the RF model to predict 
+                        hourly fog yield with strong generalization.
+                    </p>
+                </div>
+
+                <!-- Dew Model -->
+                <div class="glass-panel rounded-xl border border-slate-800 p-6">
+                    <h4 class="text-lg text-white font-medium flex items-center gap-2 mb-3">
+                        <i data-lucide="droplet" class="w-5 h-5 text-emerald-400"></i>
+                        Dew Condenser Model
+                    </h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                        Dew studies rarely publish raw data. Instead, we reconstructed dew yields from 
+                        <span class="text-emerald-300 font-mono">histogram buckets</span> and aggregate statistics 
+                        from field experiments. Each synthetic datapoint encodes:
+                    </p>
+                    <ul class="text-slate-400 text-sm font-mono-jb space-y-1 pl-4 list-disc">
+                        <li>RH<span class="text-slate-500 text-xs">_max</span> and RH<span class="text-slate-500 text-xs">_avg</span></li>
+                        <li>Dew point (converted to vapor pressure using Tetens)</li>
+                        <li>Temperature amplitude (TI_C)</li>
+                        <li>Nighttime wind speed</li>
+                    </ul>
+                    <p class="text-slate-400 text-sm leading-relaxed mt-3">
+                        A compact <span class="text-emerald-300 font-mono">MLPRegressor</span> maps these 
+                        physics-driven features to nightly dew yield. Scaling is applied via a fitted 
+                        StandardScaler saved in <span class="font-mono">dew_scaler.joblib</span>.
+                    </p>
+                </div>
+
+                <!-- AWG Model -->
+                <div class="glass-panel rounded-xl border border-slate-800 p-6">
+                    <h4 class="text-lg text-white font-medium flex items-center gap-2 mb-3">
+                        <i data-lucide="sun" class="w-5 h-5 text-yellow-400"></i>
+                        Active AWG Model
+                    </h4>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-3">
+                        AWG performance depends on solar charging and absolute humidity. We compute solar
+                        potential using:
+                    </p>
+                    <ul class="text-slate-400 text-sm font-mono-jb space-y-1 pl-4 list-disc">
+                        <li>Solar zenith angle (SPA algorithm)</li>
+                        <li>Modeled GHI → kWh/m² integration</li>
+                        <li>Humidity-dependent sorption physics</li>
+                    </ul>
+                    <p class="text-slate-400 text-sm leading-relaxed mt-3">
+                        A physics-informed regression 
+                        (<span class="text-yellow-300 font-mono">predict_water_yield()</span>) produces 
+                        daily water output based on solar energy and RH.
+                    </p>
+                </div>
+            </div>
+
+            <!-- HYBRID -->
+            <div class="glass-panel rounded-xl border border-slate-800 p-6 mt-10">
+                <h4 class="text-lg text-white font-medium mb-3 flex items-center gap-2">
+                    <i data-lucide="git-merge" class="w-5 h-5 text-indigo-400"></i>
+                    Hybrid System Logic
+                </h4>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    All models are combined into a unified daily controller that computes:
+                </p>
+                <pre class="bg-slate-950/50 text-slate-300 text-xs p-4 rounded-lg mt-4 font-mono-jb overflow-x-auto border border-slate-800">
+    fog   = Σ RF(hourly features)
+    dew   = MLP(RH_max, RH_avg, TI_C, e_hPa, wind)
+    awg   = predict_water_yield(solar_kWh, RH)
+    best  = argmax([fog, dew, awg])
+                </pre>
+                <p class="text-slate-400 text-sm leading-relaxed mt-3">
+                    This enables AeroAqua to intelligently select the most effective harvesting method for 
+                    any day of the year based on forecasted or historical climate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
     <footer class="py-12 border-t border-white/5 bg-slate-950 text-center relative z-10">
         <div class="max-w-7xl mx-auto px-6">
             <p class="text-xs font-mono-jb text-slate-600 mb-2">AEROAQUA_OS</p>
             <p class="text-xs text-slate-500">© 2025 AeroAqua Project. All systems nominal.</p>
+            <div class="mt-6">
+                <a href="https://github.com/Gawthaman/aeroaqua/tree/main"
+                target="_blank"
+                class="inline-flex items-center gap-2 text-slate-400 hover:text-white text-xs font-mono-jb transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>View Project on GitHub</span>
+                </a>
+            </div>
+
+        
         </div>
     </footer>
 

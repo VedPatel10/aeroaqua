@@ -8,6 +8,8 @@ AeroAqua is a machine-learning–driven framework for predicting and optimizing 
 
 The project unifies **data processing**, **synthetic data generation**, **feature engineering**, and **ML modeling** to simulate water yields from historical and forecasted meteorology.
 
+Interact with AeroAqua at https://aeroaqua.onrender.com/ to explore multi-day fog, dew, and AWG yield forecasts powered by these models.
+
 ---
 
 ## 1. Machine Learning Challenges in Atmospheric Water Harvesting
@@ -31,7 +33,7 @@ AeroAqua builds **three separate ML models**, each trained on its own reconstruc
 
 Fog data is sparse in most climates. We combined:
 
-- MIT-14 fog net yield data
+- MIT-14 fog net yield data ([paper](https://hdl.handle.net/1721.1/119788))
 - Pepperwood Preserve fog conditions
 - Hourly meteorology from Open-Meteo
 
@@ -82,7 +84,7 @@ RandomForestRegressor(
 
 ### 3.1 The Data Problem
 
-Dew studies rarely publish raw datapoints. The Poland dew condenser dataset only provided:
+Dew studies rarely publish raw datapoints. The Poland dew condenser dataset ([paper](https://www.sciencedirect.com/science/article/abs/pii/S0169809514002075)) only provided:
 
 - histogram buckets
 - category frequencies
