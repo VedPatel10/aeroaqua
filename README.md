@@ -10,6 +10,10 @@ The project unifies **data processing**, **synthetic data generation**, **featur
 
 Interact with AeroAqua at https://aeroaqua.onrender.com/ to explore multi-day fog, dew, and AWG yield forecasts powered by these models.
 
+Here is an example of the 3 models predicting 2016 yields:
+
+<img width="1389" height="590" alt="2016modelyields" src="https://github.com/user-attachments/assets/317eb129-d1ff-4647-8daa-86f0757e8d2e" />
+
 ---
 
 ## 1. Machine Learning Challenges in Atmospheric Water Harvesting
@@ -153,43 +157,8 @@ Outputs daily AWG yield (L/day).
 
 ---
 
-## 5. Hybrid Yield System
+## 6. Acknowledgements
 
-For each day:
+This project was done in collaboration with RBC Borealis, specifically the Let's SOLVE It program. 
 
-- fog = sum(hourly fog predictions)
-- dew = MLP(dew_features)
-- awg = predict_water_yield(solar_kwh, RH)
-- best = argmax([fog, dew, awg])
-
-This unified system powers:
-
-- 16-day forecasts
-- historical backtests
-- climate-year simulations
-- technology comparisons
-
----
-
-## 6. Data Pipeline (Fully Vectorized)
-
-AeroAqua uses a high-performance vectorized pipeline:
-
-- Fog RF model predicts thousands of hourly rows in one batch
-- Dew MLP processes all days at once
-- AWG uses lightweight per-day physics
-- All feature engineering is NumPy/Pandas vectorized
-- This enables sub-100 ms inference for web deployment.
-
----
-
-## 7. Backend API (Flask)
-
-- `/api/forecast`
-  - Fetches 16-day OpenMeteo forecast
-  - Vectorized ML predictions for Fog, AWG, Dew
-  - Returns daily yields + best system
-- `/api/historic?start=YYYY-MM-DD&end=YYYY-MM-DD`
-  - Processes historical meteorology
-  - Computes fog/AWG/dew yields
-  - Detects fog events
+Team Members: [Ved Patel](https://github.com/VedPatel10), [Gawtham Senthilvelan](https://github.com/Gawthaman), David Li, and Karthik Pakki
