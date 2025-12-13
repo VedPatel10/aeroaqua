@@ -8,7 +8,7 @@ AeroAqua is a machine-learning–driven framework for predicting and optimizing 
 
 The project unifies **data processing**, **synthetic data generation**, **feature engineering**, and **ML modeling** to simulate water yields from historical and forecasted meteorology.
 
-Interact with AeroAqua at https://aeroaqua.onrender.com/ to explore multi-day fog, dew, and AWG yield forecasts powered by these models.
+Interact with AeroAqua at https://aeroaqua.onrender.com/ to explore multi-day fog, dew, and AWG yield forecasts powered by these models. Note: you may need to wait 1-2 minutes for the webpage to load if it has been inactive for 15+ minutes. 
 
 Here is an example of the 3 models predicting 2016 yields:
 
