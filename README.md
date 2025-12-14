@@ -161,4 +161,4 @@ Outputs daily AWG yield (L/day).
 
 This project was done in collaboration with RBC Borealis, specifically the Let's SOLVE It program. 
 
-Team Members: [Ved Patel](https://github.com/VedPatel10), [Gawtham Senthilvelan](https://github.com/Gawthaman), David Li, and [Karthik Pakki](https://github.com/KarthikPakki)
+Team Members: [Ved Patel](https://github.com/VedPatel10), [Gawtham Senthilvelan](https://github.com/Gawthaman), [David Li](https://github.com/0314davidli), and [Karthik Pakki](https://github.com/KarthikPakki)
